@@ -33,13 +33,13 @@ public class Storage implements Serializable{
         return description;
     }
     
-    public void buy() throws Exception{
-        if(amount == 75) throw new Exception("Sie können im Moment nichts kaufen!");
-        this.amount++;
+    public void buy(int am) throws Exception{
+        if(amount + am > 75) throw new Exception("Sie können im Moment nichts kaufen!");
+        this.amount+=am;
     }
     
-    public void sell() throws Exception{
-        if(amount == 0) throw new Exception("Sie können im Moment nicht verkaufen!");
-        this.amount--;
+    public void sell(int am) throws Exception{
+        if(amount - am < 0) throw new Exception("Sie können im Moment nicht verkaufen!");
+        this.amount-=am;
     }
 }

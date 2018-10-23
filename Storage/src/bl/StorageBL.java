@@ -91,13 +91,13 @@ public class StorageBL extends AbstractTableModel{
         fireTableDataChanged();
     }
     
-    public void buy(int idx) throws Exception{
-        storages.get(idx).buy();
+    public void buy(int idx, int am) throws Exception{
+        storages.get(idx).buy(am);
         fireTableDataChanged();
     }
     
-    public void sell(int idx) throws Exception{
-        storages.get(idx).sell();
+    public void sell(int idx, int am) throws Exception{
+        storages.get(idx).sell(am);
         fireTableDataChanged();
     }
     

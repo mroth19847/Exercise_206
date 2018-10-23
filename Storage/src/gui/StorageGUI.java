@@ -156,7 +156,8 @@ public class StorageGUI extends javax.swing.JFrame {
         int sel = StorageTable.getSelectedRow();
         if (sel > -1) {
             try {
-                bl.buy(sel);
+                int am = Integer.parseInt(JOptionPane.showInputDialog("Bitte geben Sie den Betrag ein!"));
+                bl.buy(sel, am);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
@@ -169,7 +170,8 @@ public class StorageGUI extends javax.swing.JFrame {
         int sel = StorageTable.getSelectedRow();
         if (sel > -1) {
             try {
-                bl.sell(sel);
+                int am = Integer.parseInt(JOptionPane.showInputDialog("Bitte geben Sie den Betrag ein!"));
+                bl.sell(sel, am);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
