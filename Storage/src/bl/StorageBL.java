@@ -23,4 +23,19 @@ public class StorageBL extends AbstractTableModel{
         return storages.get(rowIndex);
     }
     
+    public void add(Storage s){
+        storages.add(s);
+        fireTableDataChanged();
+    }
+    
+    public void change(int idx, Storage s){
+        storages.set(idx, s);
+        fireTableDataChanged();
+    }
+    
+    public void delete(int idx){
+        storages.remove(idx);
+        fireTableDataChanged();
+    }
+    
 }

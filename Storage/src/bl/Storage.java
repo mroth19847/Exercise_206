@@ -8,7 +8,7 @@ public class Storage {
     private int amount;
     private int place;
 
-    public Storage(int id, String description, int amount, int place) {
+    public Storage(int id, String description, int place) {
         this.id = id;
         this.description = description;
         this.amount = amount;
