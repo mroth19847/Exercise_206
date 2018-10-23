@@ -2,6 +2,9 @@ package gui;
 
 import bl.StorageBL;
 import bl.StorageCellRenderer;
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class StorageGUI extends javax.swing.JFrame {
@@ -12,6 +15,11 @@ public class StorageGUI extends javax.swing.JFrame {
         initComponents();
         StorageTable.setModel(bl);
         StorageTable.setDefaultRenderer(Object.class, new StorageCellRenderer());
+        try {
+            bl.load(new File("./storage.ser"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -30,6 +38,11 @@ public class StorageGUI extends javax.swing.JFrame {
         sell = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         StorageTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -145,7 +158,7 @@ public class StorageGUI extends javax.swing.JFrame {
             try {
                 bl.buy(sel);
             } catch (Exception ex) {
-               JOptionPane.showMessageDialog(null, ex.getMessage());
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         } else {
             JOptionPane.showMessageDialog(null, "Bitte wählen Sie vorher einen Eintrag aus!");
@@ -158,12 +171,20 @@ public class StorageGUI extends javax.swing.JFrame {
             try {
                 bl.sell(sel);
             } catch (Exception ex) {
-               JOptionPane.showMessageDialog(null, ex.getMessage());
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         } else {
             JOptionPane.showMessageDialog(null, "Bitte wählen Sie vorher einen Eintrag aus!");
         }
     }//GEN-LAST:event_sellActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        try {
+            bl.save(new File("./storage.ser"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

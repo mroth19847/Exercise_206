@@ -1,7 +1,9 @@
 
 package bl;
 
-public class Storage {
+import java.io.Serializable;
+
+public class Storage implements Serializable{
     
     private int id;
     private String description;
