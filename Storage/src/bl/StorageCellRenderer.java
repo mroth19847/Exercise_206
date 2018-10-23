@@ -18,7 +18,10 @@ public class StorageCellRenderer implements TableCellRenderer{
             case 2: label.setText(""+s.getAmount()); break;
             case 3: label.setText(""+s.getPlace()); break;
         }
+        label.setOpaque(true);
         if(s.getAmount()==0) label.setBackground(Color.red);
+        if(isSelected) label.setBackground(Color.darkGray);
+        
         return label;
     }
     

@@ -23,9 +23,21 @@ public class StorageBL extends AbstractTableModel{
         return storages.get(rowIndex);
     }
     
+    @Override
+    public String getColumnName(int i) {
+        return colNames[i];
+    }
+    
     public boolean checkPlace(int place){
         for (Storage storage : storages) {
             if(storage.getPlace() == place) return false;
+        }
+        return true;
+    }
+    
+    public boolean checkID(int id){
+        for (Storage storage : storages) {
+            if(storage.getId() == id) return false;
         }
         return true;
     }
@@ -45,7 +57,7 @@ public class StorageBL extends AbstractTableModel{
         fireTableDataChanged();
     }
     
-    public void buy(int idx){
+    public void buy(int idx) throws Exception{
         storages.get(idx).buy();
         fireTableDataChanged();
     }

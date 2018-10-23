@@ -31,7 +31,8 @@ public class Storage {
         return description;
     }
     
-    public void buy(){
+    public void buy() throws Exception{
+        if(amount == 75) throw new Exception("Sie können im Moment nichts kaufen!");
         this.amount++;
     }
     

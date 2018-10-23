@@ -1,8 +1,7 @@
 package gui;
 
 import bl.StorageBL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import bl.StorageCellRenderer;
 import javax.swing.JOptionPane;
 
 public class StorageGUI extends javax.swing.JFrame {
@@ -12,6 +11,7 @@ public class StorageGUI extends javax.swing.JFrame {
     public StorageGUI() {
         initComponents();
         StorageTable.setModel(bl);
+        StorageTable.setDefaultRenderer(Object.class, new StorageCellRenderer());
     }
 
     @SuppressWarnings("unchecked")
@@ -142,7 +142,11 @@ public class StorageGUI extends javax.swing.JFrame {
     private void buyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyActionPerformed
         int sel = StorageTable.getSelectedRow();
         if (sel > -1) {
-            bl.buy(sel);
+            try {
+                bl.buy(sel);
+            } catch (Exception ex) {
+               JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Bitte wählen Sie vorher einen Eintrag aus!");
         }

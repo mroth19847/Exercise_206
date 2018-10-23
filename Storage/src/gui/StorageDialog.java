@@ -86,11 +86,11 @@ public class StorageDialog extends javax.swing.JDialog {
     private void btokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btokActionPerformed
         ok = true;
         try {
-            if (StorageGUI.bl.checkPlace(Integer.parseInt(tfplace.getText()))) {
+            if (StorageGUI.bl.checkPlace(Integer.parseInt(tfplace.getText()))&&StorageGUI.bl.checkID(Integer.parseInt(tfid.getText()))) {
                 storage = new Storage(Integer.parseInt(tfid.getText()), tfdescription.getText(), Integer.parseInt(tfplace.getText()));
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Dieser Platz wurde bereits verwendet!");
+                JOptionPane.showMessageDialog(null, "Platz oder ID bereits vergeben!");
             }
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "Fehlerhafte Eingabe!");
