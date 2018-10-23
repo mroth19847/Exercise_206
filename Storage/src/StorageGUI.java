@@ -55,12 +55,27 @@ public class StorageGUI extends javax.swing.JFrame {
         jMenu1.setText("Management");
 
         add.setText("Add New Article");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
         jMenu1.add(add);
 
         delete.setText("Remove Selected Article");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
         jMenu1.add(delete);
 
         edit.setText("Edit Selected Article");
+        edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editActionPerformed(evt);
+            }
+        });
         jMenu1.add(edit);
 
         jMenuBar1.add(jMenu1);
@@ -68,9 +83,19 @@ public class StorageGUI extends javax.swing.JFrame {
         jMenu2.setText("Buy / Sell");
 
         buy.setText("Buy Selected Article");
+        buy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buyActionPerformed(evt);
+            }
+        });
         jMenu2.add(buy);
 
         sell.setText("Sell Selected Article");
+        sell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sellActionPerformed(evt);
+            }
+        });
         jMenu2.add(sell);
 
         jMenuBar1.add(jMenu2);
@@ -90,6 +115,26 @@ public class StorageGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editActionPerformed
+
+    private void buyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buyActionPerformed
+
+    private void sellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sellActionPerformed
 
     /**
      * @param args the command line arguments
