@@ -11,7 +11,7 @@ public class Storage {
     public Storage(int id, String description, int place) {
         this.id = id;
         this.description = description;
-        this.amount = amount;
+        this.amount = 0;
         this.place = place;
     }
 
