@@ -7,10 +7,16 @@ public class StorageDialog extends javax.swing.JDialog {
 
     private Storage storage;
     private boolean ok;
-            
+
     public StorageDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+
+    public void fillFields(Storage s) {
+        tfid.setText("" + s.getId());
+        tfdescription.setText(s.getDescription());
+        tfplace.setText("" + s.getPlace());
     }
 
     @SuppressWarnings("unchecked")
@@ -78,13 +84,17 @@ public class StorageDialog extends javax.swing.JDialog {
 
     private void btokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btokActionPerformed
         ok = true;
-        try{
-            storage = new Storage(Integer.parseInt(tfid.getText()),tfdescription.getText(),Integer.parseInt(tfplace.getText()));
-            dispose();
-        } catch(NumberFormatException nfe){
+        try {
+            if (StorageGUI.bl.checkPlace(Integer.parseInt(tfplace.getText()))) {
+                storage = new Storage(Integer.parseInt(tfid.getText()), tfdescription.getText(), Integer.parseInt(tfplace.getText()));
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Dieser Platz wurde bereits verwendet!");
+            }
+        } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "Fehlerhafte Eingabe!");
         }
-        
+
     }//GEN-LAST:event_btokActionPerformed
 
     private void btcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcancelActionPerformed
@@ -100,7 +110,6 @@ public class StorageDialog extends javax.swing.JDialog {
         return ok;
     }
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btcancel;

@@ -1,11 +1,14 @@
 package gui;
 
 import bl.StorageBL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class StorageGUI extends javax.swing.JFrame {
 
-    StorageBL bl = new StorageBL();
-    
+    public static StorageBL bl = new StorageBL();
+
     public StorageGUI() {
         initComponents();
         StorageTable.setModel(bl);
@@ -106,23 +109,55 @@ public class StorageGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-
+        StorageDialog dlg = new StorageDialog(this, true);
+        dlg.setVisible(true);
+        if (dlg.isOk()) {
+            bl.add(dlg.getStorage());
+        }
     }//GEN-LAST:event_addActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        // TODO add your handling code here:
+        int sel = StorageTable.getSelectedRow();
+        if (sel > -1) {
+            bl.delete(sel);
+        } else {
+            JOptionPane.showMessageDialog(null, "Bitte wählen Sie vorher einen Eintrag aus!");
+        }
     }//GEN-LAST:event_deleteActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        // TODO add your handling code here:
+        int sel = StorageTable.getSelectedRow();
+        if (sel > -1) {
+            StorageDialog dlg = new StorageDialog(this, true);
+            dlg.setVisible(true);
+            if (dlg.isOk()) {
+                bl.change(sel, dlg.getStorage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Bitte wählen Sie vorher einen Eintrag aus!");
+        }
     }//GEN-LAST:event_editActionPerformed
 
     private void buyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyActionPerformed
-        // TODO add your handling code here:
+        int sel = StorageTable.getSelectedRow();
+        if (sel > -1) {
+            bl.buy(sel);
+        } else {
+            JOptionPane.showMessageDialog(null, "Bitte wählen Sie vorher einen Eintrag aus!");
+        }
     }//GEN-LAST:event_buyActionPerformed
 
     private void sellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellActionPerformed
-        // TODO add your handling code here:
+        int sel = StorageTable.getSelectedRow();
+        if (sel > -1) {
+            try {
+                bl.sell(sel);
+            } catch (Exception ex) {
+               JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Bitte wählen Sie vorher einen Eintrag aus!");
+        }
     }//GEN-LAST:event_sellActionPerformed
 
     /**

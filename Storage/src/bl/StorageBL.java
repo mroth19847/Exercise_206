@@ -23,6 +23,13 @@ public class StorageBL extends AbstractTableModel{
         return storages.get(rowIndex);
     }
     
+    public boolean checkPlace(int place){
+        for (Storage storage : storages) {
+            if(storage.getPlace() == place) return false;
+        }
+        return true;
+    }
+    
     public void add(Storage s){
         storages.add(s);
         fireTableDataChanged();
@@ -35,6 +42,16 @@ public class StorageBL extends AbstractTableModel{
     
     public void delete(int idx){
         storages.remove(idx);
+        fireTableDataChanged();
+    }
+    
+    public void buy(int idx){
+        storages.get(idx).buy();
+        fireTableDataChanged();
+    }
+    
+    public void sell(int idx) throws Exception{
+        storages.get(idx).sell();
         fireTableDataChanged();
     }
     

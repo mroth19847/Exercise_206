@@ -26,6 +26,17 @@ public class Storage {
     public int getId() {
         return id;
     }
+
+    public String getDescription() {
+        return description;
+    }
     
-   
+    public void buy(){
+        this.amount++;
+    }
+    
+    public void sell() throws Exception{
+        if(amount == 0) throw new Exception("Sie können im Moment nicht verkaufen!");
+        this.amount--;
+    }
 }
